@@ -1,38 +1,59 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+*{
+ font-family: 'Secular One', sans-serif;
+}
+
+.wrapper{
+  background: #72A8E5;
+  min-height: 753px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main{
+  flex: 1 1 auto;
+}
+
+.footer{
+  flex: 0 1 auto;
+}
+
+.entrance .h1{
+  text-align: center;
+  margin-top: 4%;
+  font-family: 'Secular One', sans-serif;
+}
+
+.entrance .h3{
+  text-align: center;
+  font-family: 'Secular One', sans-serif;
+}
+
+.img{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img{
+  width: 30%;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.quiz__item{
+  max-width: 400px;
+  margin: 5% auto;
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.question{
+  margin: 5% 1%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.quiz button{
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin: 3% 1%;
+  border-radius: 10px;
 }
