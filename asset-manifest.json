@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/quiz-redux/static/css/main.427a9787.css",
+    "main.js": "/quiz-redux/static/js/main.993283e1.js",
+    "static/js/787.df2326ea.chunk.js": "/quiz-redux/static/js/787.df2326ea.chunk.js",
+    "static/media/react.png": "/quiz-redux/static/media/react.b64b7471f0ebe5f7a9a2.png",
+    "index.html": "/quiz-redux/index.html",
+    "main.427a9787.css.map": "/quiz-redux/static/css/main.427a9787.css.map",
+    "main.993283e1.js.map": "/quiz-redux/static/js/main.993283e1.js.map",
+    "787.df2326ea.chunk.js.map": "/quiz-redux/static/js/787.df2326ea.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.427a9787.css",
+    "static/js/main.993283e1.js"
+  ]
+}
