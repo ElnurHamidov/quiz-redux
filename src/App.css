@@ -71,3 +71,15 @@ img{
 .btn-icon{
   margin-left: 4%;
 }
+
+@media (min-width: 2550px){
+  .wrapper{
+    min-height: 1079px;
+  }
+}
+
+@media (min-height: 780px){
+  .wrapper{
+    min-height: 791px;
+  }
+}
