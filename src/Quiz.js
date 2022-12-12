@@ -1,10 +1,17 @@
-import { RiQuestionAnswerFill } from "react-icons/ri";
+import { RiQuestionAnswerFill, RiEmotionSadFill } from "react-icons/ri";
 import {useSelector, useDispatch} from 'react-redux';
+import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
+import { TfiReload } from "react-icons/tfi";
+import { AiFillHome } from "react-icons/ai";
+import {useNavigate} from 'react-router-dom';
 
 export default function Quiz(){
 
     const counter=useSelector(state=>state.counter);
+    const finish=useSelector(state=>state.finish);
+    const isTrue = useSelector(state=>state.isTrue);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const questions = [
         {
@@ -48,7 +55,7 @@ export default function Quiz(){
             ]
         },
         {
-            name: 'how many types of components in React ?',
+            name: 'How many types of components in React ?',
             answers: [
                 {text: '3' , isCorrect: false},
                 {text: '5' , isCorrect: false},
@@ -110,15 +117,68 @@ export default function Quiz(){
     ]
 
     const clickHandler = (correct)=>{
-        dispatch({type: 'click'});
         if(correct) dispatch({type: 'true'});
+        if(counter === (questions.length - 1) ){
+            dispatch({type: 'finish'})
+            return;
+        }
+        dispatch({type: 'click'});
     }   
+
+    const load = counter/questions.length * 100;
+
+    if(finish){
+        if(isTrue===10){
+        return(
+            <div className="quiz">
+                <div className="quiz__item center">
+                    <div className="h2">You have answered all the questions!!!</div>
+                    <BsFillEmojiHeartEyesFill className="congrats"/>
+                    <button style={{textAlign: 'center'}} onClick={()=>dispatch({type: 'again'})}>Try again <TfiReload className="btn-icon"/></button>
+                    <button style={{textAlign: 'center'}} onClick={()=>{
+                        navigate('/');
+                        dispatch({type: 'again'});
+                        }} >Main page <AiFillHome className="btn-icon"/></button>
+                </div>
+            </div>
+        )
+    }else if(isTrue===0){
+        return(
+            <div className="quiz">
+            <div className="quiz__item center">
+                <div className="h2">You don't have the right answer</div>
+                <RiEmotionSadFill className="congrats"/>
+                <button style={{textAlign: 'center'}} onClick={()=>dispatch({type: 'again'})}>Try again <TfiReload className="btn-icon"/></button>
+                <button style={{textAlign: 'center'}} onClick={()=>{
+                    navigate('/');
+                    dispatch({type: 'again'});
+                    }} >Main page <AiFillHome className="btn-icon"/></button>
+            </div>
+        </div>
+        );
+    }else{
+        return(
+            <div className="quiz">
+            <div className="quiz__item center">
+                <div className="h2">You have answered {isTrue} questions of {questions.length}</div>
+                <button style={{textAlign: 'center'}} onClick={()=>dispatch({type: 'again'})}>Try again <TfiReload className="btn-icon"/></button>
+                <button style={{textAlign: 'center'}} onClick={()=>{
+                    navigate('/');
+                    dispatch({type: 'again'});
+                }} >Main page <AiFillHome className="btn-icon"/></button>
+            </div>
+            </div>
+        );
+    }
+
+
+    }else{
 
     return(
         <div className="quiz">
             <div className="quiz__item">
-            <div className="progress">
-                <div className="progress-bar bg-warning" role="progressbar" style={{width: "20%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress">
+                <div className="progress-bar bg-warning" role="progressbar" style={{width: `${load}%`}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div className="question">{questions[counter].name}</div>
             <div className="answers">
@@ -127,4 +187,5 @@ export default function Quiz(){
             </div>
         </div>
     );
+}
 }
